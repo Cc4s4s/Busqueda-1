@@ -85,9 +85,9 @@ public class MinMaxEngine <P extends AdversarySearchProblem<State>, State extend
 	//GUARDAR EL ESTADO CON SU VALOR (VALOR,ESTADO). GUARDAR TODOS EN UNA LISTA.
 	//LUEGO SACAR EL MEJOR(RECORRIENDO LA LISTA) Y RETORNAR ESE ESTADO.
 	public State computeSuccessor(State state){
-		List<State> successors = problem.getSuccessors(state);
+		List<State> successors = problem.getSuccessors(state); //sucesores de state
 		List<Pair<Integer,State>> succValue = new LinkedList<Pair<Integer,State>>(); 
-		Pair<Integer,State> current= new Pair<Integer,State>();
+		Pair<Integer,State> current= new Pair<Integer,State>();// (Int,State)
 		int i=0;
 		while (!successors.isEmpty()){
 			State st= successors.get(0); //obtengo state succesor
@@ -100,12 +100,12 @@ public class MinMaxEngine <P extends AdversarySearchProblem<State>, State extend
 		int max=0;
 		i=0;
 		while (i < succValue.size()){
-			if ( (succValue.get(max)).getFst() < (successors.get(i)).getFst() ){
+			if ( (succValue.get(max)).getFst() < (succValue.get(i)).getFst() ){
 				max=i;
 			}
 			i++;
 		}
-		return (succValue.get(max)).getSnd();
+		return (succValue.get(max)).getSnd(); //Retorno el estado mas prometedor.
 	}
 
 	public void report(){

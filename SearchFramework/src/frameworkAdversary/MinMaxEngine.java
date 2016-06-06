@@ -18,7 +18,6 @@ public class MinMaxEngine <P extends AdversarySearchProblem<State>, State extend
   public MinMaxEngine(P p,int maxDepth){
   	super(p,maxDepth);
   }
-
   /*
 	---- Algoritmo minMax() ----
 	
@@ -43,8 +42,6 @@ public class MinMaxEngine <P extends AdversarySearchProblem<State>, State extend
 		Fsi 
 	Ffuncion
   */	
-
-	
 	public int minMax(State s){
 		if(problem.end(s)){
 			return problem.value(s);
@@ -75,19 +72,23 @@ public class MinMaxEngine <P extends AdversarySearchProblem<State>, State extend
 	y con la máxima maxDepth() profundidad.
 	*/
 	public int computeValue(State state){
-		return 0;
+		return minMax(state);
 	}	
 
-/*
+	/*
 	Inicia la búsqueda con el fin de calcular un sucesor más prometedor para un estado. 
 	El cálculo se lleva a cabo mediante la exploración del árbol de juego correspondiente 
 	al problema, teniendo en cuenta el estado como la raíz, 
 	y con la máxima maxDepth profundidad.
-*/
+	*/
+
+	//GUARDAR EL ESTADO CON SU VALOR (VALOR,ESTADO). GUARDAR TODOS EN UNA LISTA.
+	//LUEGO SACAR EL MEJOR(RECORRIENDO LA LISTA)
 	public State computeSuccessor(State state){
 		State s=null;
 		return s;
 	}
+
 	public void report(){
 
 	}

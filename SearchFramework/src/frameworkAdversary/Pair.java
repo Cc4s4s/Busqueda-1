@@ -1,6 +1,10 @@
 public class Pair<T,E>{
 	private T fst;
 	private E snd;
+	
+	public Pair(){
+
+	}
 
 	public Pair(T first,E second){
 		fst = first;
@@ -21,5 +25,9 @@ public class Pair<T,E>{
 
 	public void setSnd(E second){
 		snd = second;
+	}
+	public void setTwo(T first, E second){
+		fst=first;
+		snd=second;
 	}
 }

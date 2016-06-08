@@ -42,18 +42,19 @@ public class MinMaxABEngine <P extends AdversarySearchProblem<State>, State exte
 	Ffuncion
   */	
 	public int minMaxAB(State s,int alfa, int beta,int depth){
-		if(problem.end(s)|| depth==0){ //depth==0 ??? 
+		if(problem.end(s)|| depth==0){ //depth==0 ??? (Profundidad 0)
 			return problem.value(s);
 		}
 		else{
 			//obtener los sucesores
 			List<State> successor = problem.getSuccessors(s);
+			//mientras haya sucesores y se respete la cota
 			while (!successor.isEmpty() && alfa<beta){
-				if (s.isMax())
+				if (s.isMax()) //s es un estado Maximo 
 					alfa= max(alfa, minMaxAB(successor.get(0), alfa, beta, depth-1));
-				else 	
+				else 	//s es un estado Minimo
 					beta= min (beta, minMaxAB(successor.get(0), alfa, beta, depth-1));		
-				successor.remove(0);
+				successor.remove(0);//avanzar
 			}
 			if (s.isMax())
 				return alfa;

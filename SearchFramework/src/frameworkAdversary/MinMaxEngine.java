@@ -43,25 +43,26 @@ public class MinMaxEngine <P extends AdversarySearchProblem<State>, State extend
 	Ffuncion
   */	
 	public int minMax(State s){
-		if(problem.end(s)){
-			return problem.value(s);
+		if(problem.end(s)){//Si es una hoja
+			return problem.value(s);//retorno su valor
 		}
 		else{
-			int x= Integer.MIN_VALUE;
-			int y= Integer.MAX_VALUE;
+			int x= Integer.MIN_VALUE;//Minimo valor Entero representable
+			int y= Integer.MAX_VALUE;//Maximo valor Entero representable
 			//obtener los sucesores
 			List<State> successor = problem.getSuccessors(s);
+			//mientras tenga sucesores
 			while (!successor.isEmpty()){
-				if (s.isMax())
+				if (s.isMax()) //Si s es un estado Maximo
 					x= max(x,minMax(successor.get(0)));
-				else 	
+				else  //Si s es un estado Minimo	
 					y= min (y, minMax(successor.get(0)));		
-				successor.remove(0);
+				successor.remove(0); //elimino elemento para avanzar.
 			}
-			if (s.isMax())
+			if (s.isMax()) //Si s es maximo retornar el valor int x.
 				return x;
 			
-			return y;
+			return y; //Sino retornar el valor int y minimo.
 		}		
 	}
 
